@@ -1,0 +1,14 @@
+
+body{
+    background-image: url("../img/images/abidjan.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.img-size-300{
+    width:400px;
+}
+
+.img-size-200{
+    width:300px;
+}
