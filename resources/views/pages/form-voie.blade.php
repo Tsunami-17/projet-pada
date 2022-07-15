@@ -18,9 +18,9 @@
         <label>Trier par:</label>
         <select name="typologie" class="form-control select2" style="width: 100%;">
             <option selected="selected">Tous</option>
-            @foreach ($Tries as $Trie)
+            {{-- @foreach ($Tries as $Trie)
                 <option>{{ $Trie->typologie }}</option>
-            @endforeach
+            @endforeach --}}
         </select>
     </div>
 

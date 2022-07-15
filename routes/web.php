@@ -66,5 +66,3 @@ Logout
 --------------------------------------------
 --------------------------------------------*/
 Route::get('/denomination', 'App\Http\Controllers\ToponymesController@commune')->middleware('auth');
-
-Route::get('/denomination', 'App\Http\Controllers\ToponymesController@trieTypo')->middleware('auth');
