@@ -8,9 +8,11 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
+  <livewire:styles />
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -27,8 +29,9 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
+          {{-- <input wire:model="message" >
+          {{ $message }} --}}
         {{-- composer require larswiegers/laravel-maps --}}
-        @yield('content')
         @include('pages.map')
       </div><!-- /.container-fluid -->
     </div>
@@ -59,5 +62,7 @@
 <script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="adminlte/dist/js/adminlte.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+ <livewire:scripts />
 </body>
 </html>

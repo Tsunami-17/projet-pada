@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Livewire\TypologieCommuneSelect;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -65,4 +65,8 @@ Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 Logout
 --------------------------------------------
 --------------------------------------------*/
-Route::get('/denomination', 'App\Http\Controllers\ToponymesController@commune')->middleware('auth');
+
+//Route::get('/denomination', '\App\Http\Livewire\TypologieCommuneSelect')->name('TypologieCommuneSelect')->middleware('auth');
+//Route::get('/denomination', [TypologieCommuneSelect::class, 'render'])->name('TypologieCommuneSelect')->middleware('auth');
+
+Route::get('/denomination', \App\Http\Livewire\TypologieCommuneSelect::class)->middleware('auth');
