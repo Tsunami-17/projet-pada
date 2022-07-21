@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
+      {{-- <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -27,10 +27,10 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      {{-- <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -67,7 +67,7 @@
             </a>
           </li>
         </ul>
-      </nav>
+      </nav> --}}
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
