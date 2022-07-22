@@ -36,12 +36,12 @@
 </head>
 <body class="hold-transition sidebar-mini">
 {{-- ------------------------------------------------------------------ --}}
-    <hr/>
-    <div id="haut"></div>
-    <div id="bas"></div>
-    <div id="ciel"></div>
+            <hr/>
+            <div id="haut"></div>
+            <div id="bas"></div>
+            <div id="ciel"></div>
 {{-- ------------------------------------------------------------------ --}}
-    <div id="app">
+    <div id="wrapper">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -100,9 +100,11 @@
             <div class="col-md-3">
                 <div class="card-body">
                     <a href="{{ route('login') }}"><img src="adminlte/dist/img/images/logosiga_o.png" alt="logo" class="img-size-300"></a>
+
                 </div>
             </div>
         </div>
+
     </div>
 </body>
 </html>

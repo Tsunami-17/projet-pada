@@ -53,29 +53,15 @@
 
     {{-- @include('layouts.partials.geojson');
     var voie = L.geoJSON(voirieGeo).addTo(mymap); --}}
-     var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/cite/wms?', {
+     {{-- var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/cite/wms?', {
         layers: 'voirie_pada_juin',
         transparent:true,
         //opacity: 0.5,
         format: 'image/png',
         version: '1.3.0',
          crs: L.CRS.EPSG4326,
-    }).addTo(mymap);
-    //select multilinestring
-    //wmsLayer.ready(function(){
-        {{-- voie.on("click", function (event) {
-            var latlng = event.latlng;
-            //alert(latlng);
-            style:{color:red}
-        }); --}}
-    //});
+    }).addTo(mymap); --}}
 
-    // Création du contrôle fullscreen
-    //var fsControl = new L.Control.FullScreen();
-    // Ajout du bouton fullscreen sur la carte
-
-
- // L.marker([51.941196,4.512291], {icon: redMarker}).addTo(map);
 
 var voiep = L.Geoserver.wms("http://18.222.93.109:8080/geoserver/pada/wms?", {
   layers:'pada:voirie_primaire',
