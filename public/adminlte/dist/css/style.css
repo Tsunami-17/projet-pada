@@ -1,0 +1,149 @@
+
+body{
+    background-image: url("../img/images/abidjan.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.img-size-300{
+    width:400px;
+}
+
+.img-size-200{
+    width:300px;
+}
+
+
+@-webkit-keyframes ligne{
+    0%{width: 0%;}
+    45%{width: 100%;}
+    55%{width: 100%; opacity: 1;}
+    100%{width: 100%; opacity: 0;}
+}
+
+@-webkit-keyframes blocHt{
+    from{top:0%;}
+    to{top: -50%;}
+}
+
+@-webkit-keyframes monte{
+    from{margin-top:45%;}
+    to{margin-top: 2%;}
+}
+
+@-webkit-keyframes blocba{
+    from{bottom:0%;}
+    to{bottom: -50%;}
+}
+
+@-webkit-keyframes effacer{
+ from{background: #fff;}
+ to{background: transparent;
+left:-100%}
+
+}
+
+header h1{
+    position: relative;
+    z-index: 5;
+    margin-top: 45%;
+    -webkit-animation-name: monte;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 6s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+hr{
+    z-index: 3;
+    height: 4px;
+    position: relative;
+    top: 50%;
+    margin: 0;
+    background: #fff;
+    border: none;
+    -webkit-animation: ligne 5s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+body,html{height: 100%; min-height: 100%; overflow: hidden; }
+body{margin: 0;}
+
+#haut{
+    z-index: 2;
+    background: orange;
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    -webkit-animation-name: blocHt;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#bas{
+    z-index: 2;
+    background: rgb(6, 159, 27);
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0%;
+    -webkit-animation-name: blocba;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#ciel{
+    z-index: 1;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    -webkit-animation-name: effacer;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 8s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.preloader{opacity:0}
+
+.preloader{
+    position:relative;
+    width:200px;
+    height:150px;
+    -webkit-transition:opacity .4s;
+    transition:opacity .4s}
+.preloader::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:45px;
+    bottom:0;
+    border:10px solid #2046f2;
+    -webkit-animation:fadeInOut 1.6s linear infinite;
+    animation:fadeInOut 1.6s linear infinite;
+}
+.preloader__text{
+    position:absolute;
+    top:50%;
+    right:0;
+    -webkit-transform:translateY(-50%);
+    transform:translateY(-50%);
+    padding:10px 0;color:#585858;
+    font-size:32px;
+    font-weight:800;
+    background-color:#fff;
+}
+.logo{
+    color:#585858;
+    font-size:34px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.text-light{
+    color: white;
+}
