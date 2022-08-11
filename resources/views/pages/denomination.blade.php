@@ -7,7 +7,9 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
     <!-- Font Awesome Icons -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="adminlte/dist/js/listedyn.js"></script>
     <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">

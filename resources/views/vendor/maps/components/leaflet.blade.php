@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin=""/>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="adminlte/dist/js/leaflet/leaflet-geoserver-request-master/src/L.Geoserver.js" ></script>
 <style>
     #{{$mapId}} {
     @if(! isset($attributes['style']))
@@ -9,7 +10,7 @@
     @else
         {{ $attributes['style'] }}
     @endif
-    }
+    //}
 </style>
 
 <div id="{{$mapId}}" @if(isset($attributes['class']))
@@ -21,8 +22,11 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+<script src="adminlte/dist/js/leaflet/leaflet-geoserver-request-master/src/L.Geoserver.js" ></script>
 <script type="text/javascript">
 
+    var layers = new Array();
+			var j=0;
     //var mymap = L.map('{{$mapId}}').setView([{{$centerPoint['lat'] ?? $centerPoint[0]}}, {{$centerPoint['long'] ?? $centerPoint[1]}}], {{$zoomLevel}});
     var mymap = L.map('{{$mapId}}').setView([5.3275904, -4.0090447], 11);
     //console.log(mymap);
@@ -90,10 +94,14 @@
     );
 
 
-function zoomreq(req){
-	//alert(req);
-   var wfs = L.Geoserver.wfs("http://18.222.93.109:8080/geoserver/bdadr/wfs", {
-    layers:'pada:enquete',
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function zoomreq(req,typeVoie){
+   var wfs = L.Geoserver.wfs("http://18.222.93.109:8080/geoserver/pada/wfs", {
+    layers:typeVoie,
     style: {
       color: "gold",
       fillOpacity: 0,
@@ -101,10 +109,10 @@ function zoomreq(req){
       stockWidth: 0.5,
     },
     onEachFeature: function (f, l) {
-            l.bindPopup('<p class="ith">INFORMATIONS ADRESSE</p><b>Identifiant : </b>'+f.properties.id_enquete+ '<br/>' +
+            l.bindPopup('<p class="ith">INFORMATIONS ADRESSE</p><b>Identifiant : </b>'+f.properties.id_voie+ '<br/>' +
 					'<b>Numéro de zone : </b>'+f.properties.num_zone+ '<br/>' +
-						'<b>Quartier : </b>'+f.properties.quartier+ '<br/>' +
-						'<b>Numéros de la voie : </b>'+f.properties.nom_voie_c+ '<br/>' +
+						'<b>commune : </b>'+f.properties.commune+ '<br/>' +
+						'<b>nouveau nom : </b>'+f.properties.new_name+ '<br/>' +
 						'<b>Début : </b>'+f.properties.debut+ '<br/>' +
 						'<b>Fin : </b>'+f.properties.fin+ '<br/>' +
 						'<b>Distance : </b>'+f.properties.distance+ '<br/>' +
@@ -117,8 +125,11 @@ function zoomreq(req){
 						'<b>Y : </b>'+f.properties.lat+ '<br/>');
 
     },
-    CQL_FILTER: req,
+
+    CQL_FILTER: "geom IS NOT NULL and "+req,
+
   });
+  console.log(wfs);
   wfs.addTo(mymap);
   layers[j] = wfs;
 	j=j+1;
@@ -127,11 +138,11 @@ function zoomreq(req){
 
 
 
-function zoommer(id){
+function zoommer(id,typeVoie){
 	//alert(id);
 
- 	 var wfst = L.Geoserver.wfs("http://18.222.93.109:8080/geoserver/bdadr/wfs", {
-    layers: 'bdadr:enquete',
+ 	 var wfst = L.Geoserver.wfs("http://18.222.93.109:8080/geoserver/pada/wfs", {
+    layers: typeVoie,
     style: {
       color: "red",
       fillOpacity: 0.5,
@@ -139,10 +150,10 @@ function zoommer(id){
       stockWidth: 0.5,
     },
     onEachFeature: function (f, l) {
-      l.bindPopup('<p class="ith">INFORMATIONS ADRESSE</p><b>Identifiant : </b>'+f.properties.id_enquete+ '<br/>' +
-					'<b>Numéro de zone : </b>'+f.properties.num_zone+ '<br/>' +
-						'<b>Quartier : </b>'+f.properties.quartier+ '<br/>' +
-						'<b>Numéros de la voie : </b>'+f.properties.nom_voie_c+ '<br/>' +
+      l.bindPopup('<p class="ith">INFORMATIONS ADRESSE</p><b>Identifiant : </b>'+f.properties.id_voie+ '<br/>' +
+					'<b>Numéro de zone : </b>'+f.properties.commune+ '<br/>' +
+						'<b>Quartier : </b>'+f.properties.new_name+ '<br/>' +
+						'<b>Numéros de la voie : </b>'+f.properties.fclass+ '<br/>' +
 						'<b>Début : </b>'+f.properties.debut+ '<br/>' +
 						'<b>Fin : </b>'+f.properties.fin+ '<br/>' +
 						'<b>Distance : </b>'+f.properties.distance+ '<br/>' +
@@ -158,13 +169,14 @@ function zoommer(id){
 						'<b>Numéro de la fiche : </b>'+f.properties.num_fiche);
 
     },
-    CQL_FILTER: "id_enquete=="+id,
+    CQL_FILTER: "id_voie=="+id,
 	zIndex: 4,
+
   });
 
   wfst.addTo(mymap);
   layers[j] = wfst;
-	j=j+1;
+  j=j+1;
 
  }
 

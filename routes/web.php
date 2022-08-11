@@ -75,6 +75,14 @@ Route::get('/denomination', [formVoieController::class,'index'])->middleware('au
 
 route::post('denomination/fetch', [formVoieController::class,'fetch'])->name('formVoieController.fetch')->middleware('auth');
 
+route::post('denomination/typevoie', [formVoieController::class,'typevoie'])->name('formVoieController.typevoie')->middleware('auth');
+
+route::post('denomination/voie', [formVoieController::class,'voie'])->name('formVoieController.voie')->middleware('auth');
+
+route::post('denomination/fclass', [formVoieController::class,'fclass'])->name('formVoieController.fclass')->middleware('auth');
+
 route::post('denomination/fetchtypo', [formVoieController::class,'fetchtypo'])->name('formVoieController.fetchtypo')->middleware('auth');
 
 route::post('denomination/description', [formVoieController::class,'description'])->name('formVoieController.description')->middleware('auth');
+
+route::post('denomination/zoomCommune', [formVoieController::class,'zoomCommune'])->name('formVoieController.zoomCommune')->middleware('auth');
